@@ -1,3 +1,32 @@
+# DLS phoebus
+
+This repository contains a fork of the upstream phoebus repository and the DLS specific release configuration.
+
+### Branches
+
+The branch layout of this repository is as follows:
+* `master` - A fork of the upstream master branch of [phoebus](https://github.com/ControlSystemStudio/phoebus/tree/master).
+* `dls-master` - The upstream master branch with approved features from DLS that we do not intend to merge upstream, plus Diamond specific configuration (e.g. phoebus docker build and startup script)
+* `development` - A test/staging environment to merge feature branches to. Branches merged here will be automatically built into a developer container image.
+* `[feature branch]` - Your work in progress.
+
+### Container builds
+
+Phoebus is deployed at Diamond using [Deploy-Tools](https://gitlab.diamond.ac.uk/controls/deploy-tools/deploy-tools-config), which requires a built container image.
+
+Container images are built and pushed to https://github.com/orgs/diamondlightsource/packages?repo_name=phoebus via CI jobs. These are triggered on the following actions:
+* `Tag` - Creating a new tag will build a fixed version image that can be used in production.
+* `Push to development branch` - Merging a feature branch into this branch will build a development image that can be used to test work in progress. Changes to this branch will overwrite the existing development image.
+
+### Contributing
+
+With this layout, we ask that you contribute using the following workflow:
+1. Create new feature branches off of `master`.
+2. Merge feature branches into `development` for testing.
+3. Reset the `development` branch to `dls-master` when you have finished testing.
+4. Create pull requests to `master` from your feature branch for changes that are intended to be merged upstream.
+5. Create pull requests to `dls-master` from your feature branch for changes that are NOT intended to be merged upstream.
+
 # phoebus
 ![GitHub Actions Status](https://github.com/ControlSystemStudio/phoebus/actions/workflows/build.yml/badge.svg)
 
