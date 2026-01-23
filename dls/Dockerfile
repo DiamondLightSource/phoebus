@@ -11,7 +11,8 @@ FROM ubuntu:24.04 as common
     ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64/
     ENV LANG en_US.UTF-8
     ENV ROOT=/phoebus
-    ENV VERSION=master
+    ENV BRANCH=dls-master
+    ENV VERSION=5.0.3-SNAPSHOT
     ENV TARGET=${ROOT}/phoebus-product/target
     WORKDIR ${ROOT}
 
@@ -24,13 +25,13 @@ FROM common as build
         git
 
     RUN git clone https://github.com/DiamondLightSource/phoebus.git \
-        --branch=${VERSION} ${ROOT}
+        --branch=${BRANCH} ${ROOT}
 
     RUN mvn -DskipTests clean install
 
     RUN ln -s ${TARGET}/product-${VERSION}.jar phoebus.jar
 
-    COPY /dls/settings /settings
+    COPY ./dls/settings /settings
 
 FROM common as runtime
 
