@@ -4,8 +4,8 @@ on:
   push:
     branches: [ "master" ]
     paths: services/alarm-logger/**
-    tags:
-      - '**'
+    # tags:
+    #   - '**'
 
 env:
   REGISTRY: ghcr.io
