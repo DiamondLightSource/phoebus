@@ -54,10 +54,6 @@ jobs:
     steps:
     - name: Build developer image
       uses: docker/build-push-action@v6
-      on:
-        push:
-          branches:
-            - development
       with:
         file: ./dls/Dockerfile
         builder: ${{ needs.configure-image.outputs.name }}
@@ -78,9 +74,6 @@ jobs:
     steps:
     - name: Build runtime image
       uses: docker/build-push-action@v6
-      on:
-        push:
-          tags:
       with:
         file: ./dls/Dockerfile
         builder: ${{ needs.configure-image.outputs.name }}
