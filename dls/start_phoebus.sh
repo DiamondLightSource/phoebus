@@ -45,4 +45,3 @@ set -x
 $docker run ${mounts} ${args} ${x11} \
   ghcr.io/diamondlightsource/phoebus:latest \
   -settings /settings/settings.ini -server 4918 -add-modules=ALL-SYSTEM "${@}"
-  
