@@ -4,8 +4,8 @@ on:
   push:
     branches: [ "master" ]
     paths: services/save-and-restore/**
-    # tags:
-    #   - '**'
+    tags:
+      - '**'
 
 env:
   REGISTRY: ghcr.io
