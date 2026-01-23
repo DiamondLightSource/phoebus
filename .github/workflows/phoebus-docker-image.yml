@@ -55,7 +55,7 @@ jobs:
           builder: ${{ steps.buildx.outputs.name }}
           push: ${{ steps.tag.outputs.do_push }}
           tags: |
-            ghcr.io/${{ env.REPOSITORY }}:${{ steps.tag.outputs.image_tag }}
+            ghcr.io/${{ env.REPOSITORY }}:${{ github.ref_name }}
           cache-from: type=gha,scope=build
           cache-to: type=gha,mode=max,scope=build
 
