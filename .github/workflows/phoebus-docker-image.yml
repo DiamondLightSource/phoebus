@@ -8,6 +8,9 @@ on:
     tags:
       - '**'
 
+env:
+  REPOSITORY: diamondlightsource/phoebus # Must be lowercase for ghcr
+
 jobs:
   build-and-push-image:
     runs-on: ubuntu-latest
@@ -52,7 +55,7 @@ jobs:
           builder: ${{ steps.buildx.outputs.name }}
           push: ${{ steps.tag.outputs.do_push }}
           tags: |
-            ghcr.io/${{ github.repository }}:${{ steps.tag.outputs.image_tag }}
+            ghcr.io/$REPOSITORY:${{ steps.tag.outputs.image_tag }}
           cache-from: type=gha,scope=build
           cache-to: type=gha,mode=max,scope=build
 
@@ -64,8 +67,8 @@ jobs:
           builder: ${{ steps.buildx.outputs.name }}
           push: ${{ steps.tag.outputs.do_push }}
           tags: |
-            ghcr.io/${{ github.repository }}:latest
-            ghcr.io/${{ github.repository }}:${{ steps.tag.outputs.image_tag }}
+            ghcr.io/$REPOSITORY:latest
+            ghcr.io/$REPOSITORY:${{ steps.tag.outputs.image_tag }}
           target: runtime
           cache-from: type=gha,scope=build
           cache-to: type=gha,mode=max,scope=build
