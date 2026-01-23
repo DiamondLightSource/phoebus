@@ -1,11 +1,12 @@
 # Modified from https://github.com/epics-containers/ec-phoebus/blob/main/.github/workflows/buiild.yml
-name: Build and publish phoebus image to ghcr.io/diamondlightsource
+name: Phoebus docker build and push CI
 
 on:
   push:
     branches:
       - development
     tags:
+      - '**'
 
 jobs:
   configure-image:
