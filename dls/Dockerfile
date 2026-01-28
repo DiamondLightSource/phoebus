@@ -8,7 +8,9 @@ FROM ubuntu:24.04 as common
         dpkg-reconfigure --frontend=noninteractive locales && \
         update-locale LANG=en_US.UTF-8
 
-    ENV BRANCH=dls-master
+    # Updated by CI jobs through build-args
+    ARG BRANCH=dls-master
+
     # Update this to track the version in the pom.xml file
     ENV VERSION=5.0.3-SNAPSHOT
     ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64/
