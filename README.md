@@ -18,6 +18,10 @@ Container images are built and pushed to https://github.com/orgs/diamondlightsou
 * `Tag` - Creating a new tag will build a fixed version image that can be used in production.
 * `Push to development branch` - Merging a feature branch into this branch will build a development image that can be used to test work in progress. Changes to this branch will overwrite the existing development image.
 
+The dockerfile is located in the `/dls` folder. Here you can edit the branch that phoebus will be built from, and the version of the upstream that was pulled into the repository. 
+
+<b>When merging from upstream, if the build version has changed you must update this in the dockerfile or the build will fail.</b> You can see which version has been pulled in by looking at the `pom.xml` file.
+
 ### Contributing
 
 With this layout, we ask that you contribute using the following workflow:
