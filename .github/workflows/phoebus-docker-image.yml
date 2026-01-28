@@ -52,6 +52,7 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           file: ./dls/Dockerfile
+          build-args: "BRANCH=development"
           builder: ${{ steps.buildx.outputs.name }}
           push: ${{ steps.tag.outputs.do_push }}
           tags: |
@@ -64,6 +65,7 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           file: ./dls/Dockerfile
+          build-args: "BRANCH=${{ steps.tag.outputs.image_tag }}"
           builder: ${{ steps.buildx.outputs.name }}
           push: ${{ steps.tag.outputs.do_push }}
           tags: |
